@@ -1,5 +1,6 @@
 <template>
-  <div class="relative">
+  <div>
+    <div class="relative">
     <button
       @click="isOpen = !isOpen"
       class="flex items-center justify-center relative z-10 border border-gray-500 bg-gray-200 h-8 w-16 focus:outline-none hover:bg-gray-300 border-r-0 rounded-l-lg border-t-4 border-b-4 border-l-4"
@@ -60,6 +61,7 @@
     >
       Category Seven</router-link
     >
+  </div>
   </div>
 </template>
 

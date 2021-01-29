@@ -109,6 +109,18 @@
 
                 <div>
                   <imageup />
+                  <!-- <input
+                    type="file"
+                    accept="image/*"
+                    @change="handleImageSelected"
+                    class="w-full bg-white border border-gray-200 px-2 py-2 rounded shadow"
+                    placeholder=""
+                  />
+                  <img
+                    v-show="imageUrl"
+                    :src="imageUrl"
+                    class="w-32 h-32 object-cover"
+                  /> -->
                 </div>
               </div>
 
