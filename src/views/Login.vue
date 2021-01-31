@@ -1,27 +1,27 @@
 <template>
-  <div class="login">
+  <form action="">
+    <div class="login">
     <body class="bg-gray-300 h-screen font-sans">
       <div class="flex flex-col items-center justify-center">
         <div>
-          <router-link to="/"
-            ><img
+          <router-link to="/"><img
               class="w-16 py-4"
               src="../image/auction-final.png"
-              alt="auction logo"
-          /></router-link>
+              alt="auction logo"/>
+              </router-link>
         </div>
         <div class="w-1/4">
           <h1 class="font-sans mb-6 text-center">Sign-In to our Website</h1>
           <div class="p-8 bg-white mb-6 rounded-lg shadow-lg">
             <div class="mb-4">
-              <label class="font-bold text-gray-900 block mb-2 text-sm"
-                >Email or mobile phone number</label
-              >
+              <label class="font-bold text-gray-900 block mb-2 text-sm">
+                Email or mobile phone number
+
+              </label>
               <input
                 type="text"
                 class="w-full bg-white border px-2 py-2 rounded shadow"
-                placeholder="Your Username"
-              />
+                placeholder="Your Username"/>
             </div>
 
             <div class="mb-4">
@@ -39,7 +39,9 @@
               class="flex items-center justify-center w-full bg-red-900 rounded shadow-lg hover:bg-red-800"
             >
               <button
-                class="text-gray-900 font-bold py-2 px-4 text-lg hover:text-blue-50 focus:outline-none"
+                class="text-gray-900 font-bold py-2 px-4 text-lg 
+                hover:text-blue-50 focus:outline-none"
+                type="submit"
               >
                 Continue
               </button>
@@ -73,6 +75,7 @@
       </div>
     </body>
   </div>
+  </form>
 </template>
 
 <script>
