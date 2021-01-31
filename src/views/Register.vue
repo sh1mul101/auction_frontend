@@ -19,7 +19,7 @@
             Create an Account
           </h1>
           <form @submit.prevent="handleSubmit">
-            <div class="px-8 bg-white mb-6 rounded-lg">
+            <div class="px-6 bg-white mb-6 rounded-lg">
               <div class="mb-4">
                 <label class=" text-gray-900 block mb-2 text-m"
                   >Your Name</label
@@ -80,7 +80,7 @@
                 />
               </div>
 
-              <div class="mb-4">
+              <div class="mb-4" id="demo">
                 <label class=" text-gray-900 block mb-2 text-m"
                   >Types of account</label
                 >
@@ -88,15 +88,16 @@
                   type="radio"
                   id="one"
                   value="1"
-                  name="actype"
+                  name="acc_type"
                   v-model="acc_type"
                   class="form-radio h-3 w-3"
                   checked
                 /><span class="ml-2 text-sm text-gray-900">Personal</span>
                 <input
                   type="radio"
-                  name="actype"
+                  id="two"
                   value="2"
+                  name="acc_type"
                   v-model="acc_type"
                   class="form-radio h-3 w-3 ml-4"
                   unchecked
@@ -234,7 +235,7 @@ import axios from 'axios';
 
 export default {
   name: "Register",
-
+  
   data() {
     return {
       name: '',
@@ -242,10 +243,10 @@ export default {
       mobile_no:'',
       password:'',
       c_password:'',
-      acc_type:'',
+      acc_type:'1',
       nid_no:'',
-      nid_front_img: null,
-      nid_bk_img: null,
+      nid_ft: null,
+      nid_bk: null,
       vat_no:'',
       vat_img: null
     }
@@ -253,10 +254,10 @@ export default {
 
     methods: {
       onFileSelected(event) {
-        this.nid_front_img = event.target.files[0]
+        this.nid_ft = event.target.files[0]
       },
       onFileSelected2(event) {
-        this.nid_bk_img = event.target.files[0]
+        this.nid_bk = event.target.files[0]
       },
       onFileSelected3(event) {
         this.vat_img = event.target.files[0]
@@ -270,23 +271,12 @@ export default {
         data.append('c_password', this.c_password);
         data.append('acc_type', this.acc_type);
         data.append('nid_no', this.nid_no);
-        data.append('nid_front_img', this.nid_front_img);
-        data.append('nid_bk_img', this.nid_bk_img);
+        data.append('nid_ft', this.nid_ft);
+        data.append('nid_bk', this.nid_bk);
         data.append('vat_no', this.vat_no);
         data.append('vat_img', this.vat_img);
-          /**name : this.name,
-          email : this.email,
-          mobile_no : this.mobile_no,
-          password: this.password,
-          acc_type : this.acc_type,
-          nid_no : this.nid_no,
-          nid_ft : this.nid_ft,
-          nid_bk : this.nid_bk,
-          vat_no : this.vat_no,
-          vat_img : this.vat_img,**/
 
-
-        axios.post('http://127.0.0.1:8000/api/users', data)
+        axios.post('http://localhost:8000/api/users', data)
           .then(
             res => {
               console.log(res)
