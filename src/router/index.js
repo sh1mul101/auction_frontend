@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import 'es6-promise/auto';
 
 const routes = [
   {
@@ -7,6 +8,7 @@ const routes = [
     name: "Home",
     component: Home,
   },
+
   {
     path: "/login",
     name: "Login",
@@ -16,16 +18,25 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Login.vue"),
   },
+
   {
     path: "/register",
     name: "Register",
     component: () => import("../views/Register.vue"),
   },
+
   {
     path: "/collection",
     name: "Collection",
     component: () => import("../views/Collection.vue"),
   },
+
+  {
+    path: "/hellouser",
+    name: "HelloUser",
+    component: () => import("../views/HelloUser.vue"),
+  },
+
 ];
 
 const router = createRouter({

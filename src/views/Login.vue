@@ -1,5 +1,5 @@
 <template>
-  <form action="">
+  <form @submit.prevent="handleSubmit">
     <div class="login">
       <body class=" bg-white flex-1 font-sans ">
         <div class="flex flex-col items-center justify-center">
@@ -17,11 +17,12 @@
             <div class="px-6 bg-white mb-6 rounded-lg">
               <div class="mb-4">
                 <label class="text-gray-900 block mb-2 text-m">
-                  Email or mobile phone number
+                  Enter Your Email
 
                 </label>
                 <input
                   type="text"
+                  v-model="email"
                   class="w-full bg-white border px-2 py-2 rounded shadow text-sm"
                   placeholder="your@example.com"/>
               </div>
@@ -32,6 +33,7 @@
                 >
                 <input
                   type="text"
+                  v-model="password"
                   class="w-full bg-white border border-gray-200 text-sm px-2 py-2 rounded shadow"
                   placeholder="Your Password"
                 />
@@ -73,7 +75,44 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "Login",
+  /** props: {
+    data: String,
+    msg: String
+  }, **/
+
+
+  data() {
+    return {
+      email:'',
+      password:''
+    }
+  },
+
+
+  methods: {
+    async handleSubmit() {
+      const response = await axios.post('login', {
+        email: this.email,
+        password: this.password,
+      });
+
+      localStorage.setItem('token',response.data.token);
+      this.$store.dispatch('user', response.data.user);
+      this.$router.push('/hellouser');
+      
+    },
+
+   /** methods: {
+      hello(data)
+      {
+        alert(data)
+      }
+    }, **/
+
+  }
 };
 </script>

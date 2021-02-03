@@ -48,13 +48,9 @@
             </div>
           </div>
           <div class="flex">
-            <router-link to="/login" class="flex items-center justify-center px-2 hover:text-green-200"
+          <a href="javascript:void(0)" @click="handleClick" class="flex items-center justify-center hover:text-green-200"
             >
-            <span class="px-1 mb-1">Sign In</span></router-link
-          >
-          <router-link to="/register" class="flex items-center justify-center hover:text-green-200"
-            >
-            <span class="px-1 mb-1">Sign Up</span></router-link
+            <span class="px-1 mb-1">Sign Out</span></a
           >
           </div>
         </nav>
@@ -62,8 +58,21 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import 'es6-promise/auto'
 export default {
-    name: "Nav",
+    name: "NavUser",
+
+    methods: {
+        handleClick() {
+            localStorage.removeItem('token');
+            this.$router.push('/')
+        }
+    },
+
+    computed: {
+        ...mapGetters(['user'])
+    }
 
 }
 </script>

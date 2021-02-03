@@ -158,7 +158,8 @@
 
               </div>
 
-              <div class="mb-4">
+              <div v-if="acc_type==2">
+                <div class="mb-4">
                 <label class=" text-gray-900 block mb-2 text-m"
                   >VAt registration number</label
                 >
@@ -181,11 +182,7 @@
                     @change="onFileSelected3"
                     class="w-full bg-white border border-gray-200 px-2 py-2 rounded shadow"
                   />
-                  <!-- <img
-                    v-show="imageUrl"
-                    :src="imageUrl"
-                    class="w-32 h-32 object-cover"
-                  /> -->
+              </div>
               </div>
 
               <!-- <div class="mb-4">
@@ -262,7 +259,7 @@ export default {
       onFileSelected3(event) {
         this.vat_img = event.target.files[0]
       },
-      handleSubmit() { 
+      async handleSubmit() { 
         const data = new FormData();
         data.append('name', this.name);
         data.append('email', this.email);
@@ -276,17 +273,9 @@ export default {
         data.append('vat_no', this.vat_no);
         data.append('vat_img', this.vat_img);
 
-        axios.post('http://localhost:8000/api/users', data)
-          .then(
-            res => {
-              console.log(res)
-            }
-            
-          ).catch(
-            err => {
-              console.log(err)
-            }
-          )
+        await axios.post('register', data);
+
+        this.$router.push('/login');
       }
     },
     components: {
